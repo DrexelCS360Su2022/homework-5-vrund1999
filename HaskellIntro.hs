@@ -3,6 +3,9 @@
 module HaskellIntro where
 
 import Set
+import GHC.Read (list)
+import Data.Bits (Bits(xor))
+import Data.Foldable (find)
 
 -- Load this file into GHCi (say, with `ghci HaskellIntro.hs`) and type
 -- `isThisWorking` at the prompt. GHCi will tell you whether it's working!
@@ -15,32 +18,45 @@ isThisWorking = "Yes"
 --
 
 lastDigit :: Integer -> Integer
-lastDigit = error "lastDigit not yet defined"
+lastDigit n = n `mod` 10
 
 dropLastDigit :: Integer -> Integer
-dropLastDigit = error "dropLastDigit not yet defined"
+dropLastDigit n = div n 10
 
 toDigits :: Integer -> [Integer]
-toDigits = error "toDigits not yet defined"
+toDigits n
+        | n <= 0 = []
+        | otherwise = toDigits (dropLastDigit n) ++ [lastDigit n]
+
+doubleEveryOtherLeft :: [Integer] -> [Integer]
+doubleEveryOtherLeft [] = []
+doubleEveryOtherLeft [a] = [a]
+doubleEveryOtherLeft (a:b:cs) = [a, b*2] ++ doubleEveryOtherLeft cs
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = error "doubleEveryOther not yet defined"
+doubleEveryOther as = reverse (doubleEveryOtherLeft (reverse as))
+
+findSum :: [Integer] -> Integer
+findSum [] = 0
+findSum (a:bs) = a + findSum bs
 
 sumDigits :: [Integer] -> Integer
-sumDigits = error "sumDigits not yet defined"
+sumDigits [] = 0
+sumDigits (a:bs) = findSum (toDigits a) + sumDigits bs
 
-validate :: Integer -> Bool
-validate = error "validate not yet defined"
+-- validate :: Integer -> Bool
+-- validate a = sumDigits (doubleEveryOther (toDigits a)) `mod` 10 == 0
 
 --
 -- Problem 2
 --
 
-pow :: (a -> a) -> Int -> a -> a
-pow = error "pow not yet defined"
+-- pow :: (a -> a) -> Int -> a -> a
+-- pow f n | (n==0) = 1
+--         | f (pow f (n-1))
 
 g :: Integer -> Integer
-g = error "g not yet defined"
+g = error "h not yet defined"
 
 h :: Integer -> Integer
 h = error "h not yet defined"
