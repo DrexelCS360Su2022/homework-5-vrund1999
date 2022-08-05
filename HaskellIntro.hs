@@ -44,8 +44,8 @@ sumDigits :: [Integer] -> Integer
 sumDigits [] = 0
 sumDigits (a:bs) = findSum (toDigits a) + sumDigits bs
 
--- validate :: Integer -> Bool
--- validate a = sumDigits (doubleEveryOther (toDigits a)) `mod` 10 == 0
+validate :: Integer -> Bool
+validate a = sumDigits (doubleEveryOther (toDigits a)) `mod` 10 == 0
 
 --
 -- Problem 2
@@ -58,13 +58,16 @@ pow f n      | n == 1 = f
              | otherwise = f . pow f (n-1)
 
 g :: Integer -> Integer
-g = error "h not yet defined"
+g 0 = 0
+g n = n - pow g 2 (n - 1)
 
 h :: Integer -> Integer
-h = error "h not yet defined"
+h 0 = 0
+h n = n - pow h 3 (n-1)
 
 d :: Int -> Integer -> Integer
-d = error "d not yet defined"
+d _ 0 = 0
+d n a = a - pow (d n) n (a - 1)
 
 --
 -- Problem 3
