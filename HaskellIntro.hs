@@ -50,10 +50,12 @@ sumDigits (a:bs) = findSum (toDigits a) + sumDigits bs
 --
 -- Problem 2
 --
+square :: Int -> Int
+square x = x * x
 
--- pow :: (a -> a) -> Int -> a -> a
--- pow f n | (n==0) = 1
---         | f (pow f (n-1))
+pow :: (a -> a) -> Int -> a -> a
+pow f n      | n == 1 = f
+             | otherwise = f . pow f (n-1)
 
 g :: Integer -> Integer
 g = error "h not yet defined"
