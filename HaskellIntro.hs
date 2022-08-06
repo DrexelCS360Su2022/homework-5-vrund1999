@@ -54,8 +54,8 @@ square :: Int -> Int
 square x = x * x
 
 pow :: (a -> a) -> Int -> a -> a
-pow f n      | n == 1 = f
-             | otherwise = f . pow f (n-1)
+pow f n x |   n == 0 = x
+          |   otherwise = f (pow f (n - 1) x)
 
 g :: Integer -> Integer
 g 0 = 0
