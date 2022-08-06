@@ -14,4 +14,4 @@ Problem 1:  40m
 
 Problem 2:  50m
 
-Problem 3:  1.5 h
+Problem 3:  2.5 h
