@@ -18,7 +18,7 @@ isThisWorking = "Yes"
 --
 
 lastDigit :: Integer -> Integer
-lastDigit n = n `mod` 10
+lastDigit n = mod n 10
 
 dropLastDigit :: Integer -> Integer
 dropLastDigit n = div n 10
@@ -81,4 +81,4 @@ second (_, n) = n
 
 powerSet :: (Ord a) => Set a -> Set (Set a)
 powerSet as | Set.isEmpty as = Set.singleton Set.empty
-            | otherwise = Set.mapSet (Set.insert (first (Set.split as))) (powerSet (second (Set.split as))) `union` powerSet (second (Set.split as))
+            | otherwise = Set.union (Set.mapSet (Set.insert (first (Set.split as))) (powerSet (second (Set.split as)))) (powerSet (second (Set.split as)))
