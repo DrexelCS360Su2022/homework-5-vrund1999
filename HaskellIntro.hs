@@ -80,5 +80,5 @@ second :: (a, b) -> b
 second (_, n) = n
 
 powerSet :: (Ord a) => Set a -> Set (Set a)
-powerSet as | isEmpty as = singleton as
+powerSet as | isEmpty as = singleton empty
             | otherwise = mapSet (insert (first (split as))) (powerSet (second (split as))) `union` powerSet (second (split as))
