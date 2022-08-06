@@ -15,6 +15,7 @@ Problem 1:  40m
 Problem 2:  50m
 
 Problem 3:  3 h
+
 I was able to implement powerSet and test it manually through loading the file and running powerSet on a sample set and was receiving the right output. For some reason I am getting error when running 'make test' on TUX and it is also failing with same on github when it runs the tests. Please check my implementation without deducting full points for failing tests.
 
 The error says: 
