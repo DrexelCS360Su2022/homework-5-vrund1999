@@ -73,4 +73,12 @@ d n a = a - pow (d n) n (a - 1)
 -- Problem 3
 --
 
-powerSet = error "powerSet not yet defined"
+first :: (a, b) -> a
+first (n, _) = n
+
+second :: (a, b) -> b
+second (_, n) = n
+
+powerSet :: (Ord a) => Set a -> Set (Set a)
+powerSet as | isEmpty as = singleton as
+            | otherwise = mapSet (insert (first (split as))) (powerSet (second (split as))) `union` powerSet (second (split as))
